@@ -1,0 +1,13 @@
+// Write a function called 'findInArray' that takes in two parameters, the first representing the array to be searched and the second representing the value to be searched for. Return true if the value exists in the array. If it doesn't exist return false.
+
+
+function findInArray(arr, val) {
+  for (var i = 0; i < arr.length; i++) {
+    if(arr.indexOf(val) > -1) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+}
