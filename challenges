@@ -55,6 +55,8 @@ So by the time you console.log(text), you've already added a new, undefined vari
 
 -------------------------------------------------------------------
 
+//Make a bank
+
 var bank = {
 	addUnreasonableFees: function(account, amount) {
 		
@@ -83,3 +85,36 @@ bank["5"].deposit(20);
 bank["5"].checkAmount();
 bank["5"].withdraw(10);
 bank["5"].checkAmount();
+-----------------------------------------------------------------------------
+Write a function that takes in an array of numbers and determines whether those numbers are in order
+function ordered(arr) {
+	// Code here
+	var prevNum = 0;
+	var outOfOrder = 0;
+	arr.forEach(function(x, i){
+		if (arr[i] < prevNum) {
+			outOfOrder = 1;
+		}
+		prevNum = x;
+	});
+	
+	if (outOfOrder === 1) {
+		return false;
+	} else {
+		return true;
+	}
+}
+ ordered( [4, 9, 12, 12, 52, 22, 56] );
+ 
+ // Anothe solution
+ function ordered( arr ) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+
