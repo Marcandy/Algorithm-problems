@@ -54,3 +54,31 @@ logIt();
 So by the time you console.log(text), you've already added a new, undefined variable to the logIt() function scope, that would be used instead of the text variable outside its scope.
 
 -------------------------------------------------------------------
+
+var bank = {
+	addUnreasonableFees: function(account, amount) {
+		
+	}
+}
+
+bank["5"] = {
+	money: "0",
+	acctNumber: "5",
+	type: "checking",
+	withdraw: function(amt) {
+		bank["5"].money =bank["5"].money + amt;
+	},
+	deposit: function(amt) {
+	    bank['5'].money = bank['5'].money + amt;
+	},
+	close: function() {
+		console.log(bank[5].money)
+	},
+	checkAmount: function() {
+		console.log("account has " + bank["5"].money)
+	}
+} 
+
+bank["5"].deposit(20);
+bank["5"].checkAmount();
+bank["5"].withdraw(10);
