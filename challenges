@@ -82,3 +82,4 @@ bank["5"] = {
 bank["5"].deposit(20);
 bank["5"].checkAmount();
 bank["5"].withdraw(10);
+bank["5"].checkAmount();
