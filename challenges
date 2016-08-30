@@ -188,3 +188,44 @@ zebra.run();
 zebra.makeSound();
 
 var monkey = new Animal('Monkey', 2, 'Oooo Oooo')
+//--------------------------------------------------------
+//Create a dog object that has hungry, tired, playful = 0
+var dog = {
+	hungry: 0,
+	tired: 0,
+	playful: 0,
+	//Create the methods on that object : play, eat, sleep
+	play: function(){
+		//The play method decreases playful by 30 (Never less than 0), and increases hungry by 20 and tired by 10, 
+		this.playful = this.playful - 30;
+		if(this.playful < 0 ) this.playful = 0;
+		this.hungry = this.hungry + 20;
+		this.tired = this.tired + 10;
+	},
+	eat: function(){
+		this.hungry = this.hungry - 30;
+		if(this.hungry < 0 ) this.hungry = 0;
+		this.tired = this.tired + 20;
+	},
+	sleep: function(){
+		this.tired = this.tired - 30;
+		if(this.tired < 0 ) this.tired = 0;
+		this.playful = this.playful + 20;
+	},
+//Add a method that logs how hungry, tired, and playful your dog is
+	log: function(){
+		console.log(this.tired, this.hungry, this.playful)
+	}
+}
+
+
+
+dog.play();
+dog.eat();
+dog.sleep();
+dog.play();
+dog.play();
+dog.play();
+dog.sleep();
+dog.log();
+
