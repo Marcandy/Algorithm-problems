@@ -138,3 +138,30 @@ How handle params: it doesn't, don't give it params
 What does it return: new function
 The new function, takes in params, and is when it is invoked
 */
+-------------------------------------------------------
+//Build a bank constructor Function
+function Bank(accountNumber, ownerName, balance){
+//It needs an account number, and owner name, and a balance.
+	this.accountNumber = accountNumber;
+	this.ownerName = ownerName;
+	this.balance = balance;
+//Give it methods to add and withdraw from the balance
+	this.add = function(amount){
+		this.balance += amount;
+	}
+	this.withdraw = function(amount){
+		this.balance -= amount;
+	}
+//Give it a method to log the remaining balance for the owner name
+	this.log = function(){
+		console.log(this.ownerName + " has a remaining balance of " + this.balance);
+	}
+//Make 2 accounts and manipulate their balances.
+}
+
+var acct1 = new Bank(1, "Joe", 0);
+acct1.add(1304813512);
+
+var acct2 = new Bank(2, "Ryan", 0);
+acct2.add(13513515);
+acct2.withdraw(135205);
