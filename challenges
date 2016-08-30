@@ -165,3 +165,26 @@ acct1.add(1304813512);
 var acct2 = new Bank(2, "Ryan", 0);
 acct2.add(13513515);
 acct2.withdraw(135205);
+//-------------------------------------------------
+function Animal(type, numLegs, sound){
+	//this = {}
+		//Store the variables
+		this.type = type;
+		this.legs = numLegs;
+		this.sound = sound;
+		//Make a sound method
+		this.makeSound = function(){
+			console.log("the " + this.type + " says " + this.sound);
+		};
+		this.run = function(){
+			console.log("the " + this.type + " runs on " + this.legs + " legs")
+		}
+		//Make a run method
+	//return this
+}
+
+var zebra = new Animal('Zebra', 4, 'whoop whoop')
+zebra.run();
+zebra.makeSound();
+
+var monkey = new Animal('Monkey', 2, 'Oooo Oooo')
