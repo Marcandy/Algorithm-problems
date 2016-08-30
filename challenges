@@ -117,4 +117,24 @@ function ordered(arr) {
 }
 
 
+*
+CALL
+func.call()
+When is it invoked:  Immediately
+How handle params: arguemnts 2+ are passed in
+What does it return: undefined
 
+APPLY
+func.apply()
+When is it invoked: Immediately
+How handle params: 2nd parameter is an array that is passed in 1 at a time
+What does it return: undefined
+
+BIND
+var newFunc = func.bind(context)
+newFunc(param1, param2, 3, "13134")
+When is it invoked: not Immediately
+How handle params: it doesn't, don't give it params
+What does it return: new function
+The new function, takes in params, and is when it is invoked
+*/
