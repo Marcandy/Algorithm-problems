@@ -244,5 +244,25 @@ function nextPal(num) {
 }
 
 nextPal(191);
+//-------------------------------------------
 
+'anane' === 1
+'adak' === 2
+amazonCounting(1) // 'anane'
+amazonCounting(2) // 'adak'
+amazonCounting(13) // 'adak adak adak adak adak adak anane'
+No trailing spaces!
 
+function countArara(n) {
+    var count = [];
+
+    for ( var i = 2; i <= n; i += 2 ) {
+      count.push("adak");
+    }
+
+    if (n % 2 !== 0) {
+        count.push("anane");
+    }
+    
+    return count.join(" ");
+}
