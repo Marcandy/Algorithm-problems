@@ -289,3 +289,38 @@ function removeSmallest(numbers) {
 
 //---------------------------------------------
 Callback are function definition
+
+//-----------------------------------------
+
+An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. 
+Assume the empty string is an isogram. Ignore letter case.
+
+// function isIsogram(str) {
+// 	// Code here
+// 	var splitStr = str.toLowerCase().split('');
+// 	for(var i = 0; i < splitStr.length; i++) {
+// 		if(splitStr[i] !== splitStr[i + 1]) {
+// 			return true;
+// 		}
+		
+// 	}
+
+// 	return false;
+// }
+
+// isIsogram("aba");
+//--
+function isIsogram(str) {
+	// Code here
+	var splitStr = str.toLowerCase().split('');
+	for(var i = 0; i < splitStr.length; i++) {
+		if(splitStr.lastIndexOf(splitStr[i]) !== i) {
+			return false;
+		}
+		
+	}
+
+	return true;
+}
+
+isIsogram("aba");
