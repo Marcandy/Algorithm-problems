@@ -394,3 +394,22 @@ sortList(a, [
   {a: 2, b: 40},
   {a: 1, b: 3}
 ]);
+
+function removeItem(myGroceryList, remItem) {
+	for(var i = 0; i < myGroceryList.length; i++){
+	if(myGroceryList[i] === remItem){
+		myGroceryList.splice(i, 1)
+		}
+	}
+	return myGroceryList;
+}
+
+function addItem(myGroceryList, item) {
+	for(var i = 0; i < myGroceryList.length; i++) {
+		if(myGroceryList[i] === item){
+			return myGroceryList;
+		}
+	}
+	myGroceryList.push(item);
+	return myGroceryList;
+}
