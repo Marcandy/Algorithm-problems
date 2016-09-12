@@ -426,3 +426,33 @@ function addTen(numbers){
 	}
 	return numbers;
 }
+
+
+//---------------------
+
+function sum(num1d, num2) {
+	if(y !== undefined){
+	 return num1 + num2;
+	} 
+	 else {
+	 	return function(y){
+	 		return x + y;
+	 	}
+	 }
+}
+
+sum(2, 3);
+//------------------------------
+
+function sum(num1d, num2) {
+	if(y !== undefined){
+	 return num1 + num2;
+	} 
+	 else {
+	 	return function(y){
+	 		return x + y;
+	 	}
+	 }
+}
+
+sum(2, 3);
