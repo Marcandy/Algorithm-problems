@@ -806,3 +806,19 @@ function formatter( input ) {
 
   return returnArr.filter( element => element.length !== 0 );
 }
+
+//---------------------------------------------------------------------------------------
+
+accum("abcd");    // "A-Bb-Ccc-Dddd"
+accum("RqaEzty"); // "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt");    // "C-Ww-Aaa-Tttt"
+
+function accum(str) {
+  let arr =str.split('');
+  let output = [];
+  for (var i = 0; i < arr.length; i++) {
+    output.push(arr[i].toUpperCase() +Array(i+1).join(arr[i].toLowerCase()));
+  }
+  return output.join('-');
+  
+}
