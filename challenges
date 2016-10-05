@@ -871,3 +871,35 @@ function calculateYears(principal, interest, tax, desired) {
      }
      return y;
 }
+
+function comp(array1, array2){
+
+  //your code here
+  let count = 0;
+  
+ 
+   
+  if (array1 === null || array2 === null || array1.length !== array2.length ) {
+    return false;
+    
+  }
+  
+  
+  
+  
+  for(let i = 0; i < array1.length; i++) {
+  	
+    for (let j = 0; j < array2.length; j++) {
+    	if(array2[j] === Math.pow(array1[i], 2) ) {
+       //count++;
+       
+    	 array2.splice(j, 1);
+    	 break;
+       	}
+    }
+ }
+   if(array2.length === 0) {
+   		 return true;
+   }
+  return false;
+}
