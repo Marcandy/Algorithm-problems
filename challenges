@@ -920,5 +920,15 @@ function toCamelCase(str){
   return arr.join("");
 }
 
-
+function toCamelCase(str) {
+  str = str.split('');
+   return str.map(function(char, i) {
+    if(char === '_' || char === '-') {
+    char = str[i+1].toUpperCase();
+      str.splice(i+1, 1);
+      
+      }
+      return char;
+  }).join('');
+}
 
