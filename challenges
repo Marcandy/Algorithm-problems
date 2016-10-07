@@ -903,3 +903,22 @@ function comp(array1, array2){
    }
   return false;
 }
+
+//---------------------------------------------------------------------------------------------------
+Complete the method/function so that it converts dash/underscore delimited words into camel casing. The first word within the output should be capitalized only if the original word was capitalized.
+
+function toCamelCase(str){
+  var arr = str.toLowerCase().split("");
+  arr[0] = str[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === "-" || arr[i] === "_") {
+      arr[i + 1] = arr[i + 1].toUpperCase();
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+  return arr.join("");
+}
+
+
+
