@@ -1,0 +1,50 @@
+Given a node object representing a binary tree:
+
+Node:
+  value: <int>,
+  left: <Node> or null,
+  right: <Node> or null
+
+write a function that returns the sum of all values, including the root.
+
+Examples:
+
+10
+| \
+1  2
+=> 13
+
+1
+| \
+0  0
+    \
+     2
+=> 3
+
+//---------------solution-------------//
+
+function sumTheTreeValues(root){
+  // your code here
+  var left = 0
+  if(root.left){
+    left = sumTheTreeValues(root.left)
+  }
+  var right = 0
+  if(root.right){
+    right = sumTheTreeValues(root.right)
+  }
+  return left + right + root.value
+  
+}
+
+//-------
+function sumTheTreeValues(root){
+   let sum = 0;
+   let current = root;
+   if(current !== null) {
+       sum += sumTheTreeValues(current.left);
+       sum += current.value;
+       sum += sumTheTreeValues(current.right);
+   }
+   return sum;
+}
