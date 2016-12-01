@@ -1,0 +1,248 @@
+// function exponent( num, times) {
+//   var i = 0;
+//   var total = 1;
+  
+//   while( i < times) {
+//     total = total * num;
+//     i++
+//   }
+//   return total;
+// }
+
+
+// function exponent( num, times) {
+ 
+//   var total = 1;
+  
+//   for( var i = 0; i < times; i ++) {
+//   total = total * num;
+//   }
+//   return total;
+// }
+
+// exponent(4, 3);
+
+//---------------------------------
+
+// Write a function called 'findInArray' that takes in two parameters, the first representing the array to be searched and the second representing the value to be searched for. Return true if the value exists in the array. If it doesn't exist return false.
+
+// Code Here
+
+// function findInArray(arr, val ) {
+//   for(var i = 0; i < arr.length; i++) {
+//     if(arr[i] === val) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+
+// Create a function called myLoop that takes in two parameters, the first parameter should represent a starting number and the second is how many times the starting number should be incremented. Use a forloop to increment the first parameter a number of times equal to the second parameter. Then return the modified number. For example if the first parameter is 3 and the second parameter is 4, the number three should be increased by one each time the forloop runs, and the for loop should run 4 times. This should return the number 7
+
+
+// function myLoop(parm1, add) {
+//   for(var i = 0; i < add; i++) {
+//     parm1++
+//   }
+//   return parm1
+// }
+
+// myLoop(2, 3);
+
+
+
+
+// Create a function called last that returns the last element of an array for an array of any length.
+
+// function last(arr) {
+//   return arr.pop();
+// }
+
+// last([2, 3, 4]);
+
+//-------------------------------------------
+
+//Write a function below called "oddsAndEvens" that loops through a parameter "nums" (an array).
+//for each number in the given array, if it is even, it is added to the evens array, if the number is odd, is added to the odds array.
+
+var evens = []; // Do not edit this line.
+var odds = []; // Do not edit this line.
+
+//code here
+
+// function oddsAndEvens(nums) {
+//   for(var i = 0; i < nums.length; i++) {
+//     if(nums[i] % 2 === 0) {
+//       evens.push(nums[i]);
+//     }
+//     else{
+//       odds.push(nums[i]);
+//     }
+//   }
+// }
+
+
+// oddsAndEvens([2, 3, 5])
+
+// console.log(evens, odds)
+
+//------------------------------------------------------
+
+//Write a function called removeItem that is given two arguments, the first is an array called myGroceryList, and the second is an item to remove from myGroceryList. If the second argument (the item to remove) matches an item in myGroceryList, remove that item from your grocery list and return the new, updated grocery list. 
+
+//Code Here
+  
+//Once you do that, write another function called addItem that is given two arguments, the first is myGroceryList and the second is an item to add to your grocery list. If the item is already in the grocery list, do not add it a second time. If it's not in the list, then add it and return the new list.
+
+//Code Here
+
+// function removeItem(myGroceryList, item) {
+//   for(var i = 0; i < myGroceryList.length; i++) {
+//     if(myGroceryList[i] === item) {
+//       myGroceryList.splice(i, 1)
+//     }
+//   }
+//   return myGroceryList;
+// }
+
+// function addItem(myGroceryList, item) {
+//   for(var i = 0; i < myGroceryList.length; i++) {
+//     if(myGroceryList[i] === item) {
+//     return  myGroceryList;
+//     }
+//   }
+//   myGroceryList.push(item);
+//   return myGroceryList
+// }
+
+// removeItem([2, 2, 4, 5, 6], 4);
+// addItem([2, 2, 4, 5, 6], 3);
+
+
+//------------------------------------------------------
+
+
+//Write a function called 'reverse' that takes is given str as it's only argument and returns that string after it's been reversed
+
+// function reverse(str) {
+//   return str.split('').reverse('').join('');
+// }
+
+// reverse('booom')
+
+//------------------------------------------------------
+
+
+// var numbers = [5, '9', 16, 19, '25', '34', 48];
+// //Write a function called addTen that is given 'numbers' as it's only argument and returns a new
+// //array after adding ten to each item in numbers. *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
+
+//   //Code Here
+  
+//   function addTen(numbers) {
+//     var ten = numbers.map(function(num){
+//       //mapping through the old array to create a new array
+//       return num = Number(num) + 10 
+//       //then using number to turn everything to numerical values
+//     })
+//   return ten;
+//   }
+
+// addTen(numbers)
+
+
+
+//------------------------------------------------------
+
+
+
+// var num1 = Math.floor(Math.random() * (30 - 0) + 0);
+// var num2 = Math.floor(Math.random() * (30 - 0) + 0);
+// var arr1 = [];
+// var arr2 = [];
+// for(var i = 0; i < num1; i++){
+//   arr1.push(i);
+// }
+// for(var i = 0; i < num2; i++){
+//   arr2.push(i);
+// }
+// //Above is some code that adds a set of random numbers to both arr1 and arr2.
+// //Write a function called 'longer' that is given arr1 and arr2 as its only arguments and returns the array that is longer.
+
+// // Code Here
+// function longer(arr1, arr2) {
+//   if(arr1.length > arr2.length) {
+//     return arr1;
+//   }
+//   return arr2;
+// }
+// var longerArray = longer(arr1, arr2); // This is for testing purposes. Do not change.
+
+// longer(arr1, arr2);
+
+//------------------------------------------------------
+
+// Create a function called "looper" that when passed an array of numbers will increment each value in the array by 5 and then return the updated array. For example: if the looper function were to be passed [ 2, 7 ] it should return [ 7, 12 ]
+
+
+// function looper(num) {
+//   num.forEach(function(part, index) {
+//     num[index] += 5;
+//   })
+//   return num;
+// }
+
+
+// looper([2, 3, 5]);
+
+
+// Create a function called evenFinder that takes an array as an argument and returns an array with all of the odd numbers removed. 
+
+// Code Here
+
+// function evenFinder(arr) {
+//   var even = [];
+//   arr.map(function(num){
+//     //dont have to set the arr.map directly to the new array
+//     if(num % 2 === 0) {
+//       return even.push(num)
+      
+//     }
+    
+//   })
+//   return even;
+// }
+
+// evenFinder([2, 3, 4, 5, 7])
+
+
+// For loops are especially useful when combined with arrays. Create an empty array called myArray, then create a function called arrayFiller that takes one parameter (the parameter will be a number). Then fill myArray with the string "item" the number of times indicated by the parameter. Return the filled array. For example if I were to call arrayFiller(2) I would expect the return value to be ["item","item"] .
+
+
+// var myArray = [];
+
+// function arrayFiller(number) {
+//   for( var i = 0; i < number; i++) {
+//     myArray.push('item');
+//   }
+//   return myArray;
+// }
+
+
+// arrayFiller(3);
+
+//------------------------------------------------------
+
+//Create a function called first that returns the first element of an array that is passed to it.
+
+
+// function first(arr) {
+//   return arr.shift()
+// }
+
+
+
+// first([2, 3]);
+
+
