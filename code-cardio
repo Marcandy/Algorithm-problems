@@ -245,4 +245,65 @@ var odds = []; // Do not edit this line.
 
 // first([2, 3]);
 
+//------------------------------------------------------------
+
+// function vowelCount(str1)
+// {
+//     var vowels = 'aeiouAEIOU';
+//     var count = 0;
+
+//     for(var i = 0; i < str1.length ; i++)
+//     {
+//         // Code Here
+//     	for(var j = 0; j < vowels.length; j++) {
+//         if(str1[i] === vowels[j]) {
+//             count++
+//         }
+//         }
+         
+
+//     }
+//     return count;
+// }
+
+// vowelCount('abcdA')
+
+//Define fullName function here
+// function fullName(firstName, lastName, cb) {
+// return cb(firstName, lastName); 
+// }
+
+// function welcomeMessage(fn,ln) {
+//     return 'Welcome To DevMountain ' + fn + ' ' + ln;
+// }
+
+
+// // Invoke fullName function here 
+// fullName('Marc', 'Noel', welcomeMessage);
+
+
+
+var user = {
+    id: 1945323,
+    fullName: 'null',
+    setUserName: function(firstName, lastName) {
+        this.fullName = firstName + " " + lastName;
+    }
+};
+
+
+// Code here 
+function getUserInfo(firstName, LastName, cb, cbObj) {
+  cb.apply(cbObj, [firstName, LastName]);
+}
+
+getUserInfo("Sally", "Rally", user.setUserName, user);
+
+
+
+
+
+
+
+
 
