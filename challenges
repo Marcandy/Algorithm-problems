@@ -1047,3 +1047,19 @@ function revers(str) {
 }
 
 revers('boom');
+
+//------------------------------------
+
+Write a function called updateUserInfo that will take 5 parameters (array, property, value, newEmail, and newName). The array parameter is an array of objects. Have the function loop through the array of objects. If the property parameter, a key of the objects, equals the value parameter, then update the email property value to be newEmail and the name property value to be newName. When you are done, return the array.
+
+function updateUserInfo(array, property, value, newEmail, newName) {
+ for(var i = 0; i < array.length; i++) {
+  if(array[i].hasOwnProperty(property) && array[i][property] === value) {
+     array[i].email = newEmail;
+     array[i].name = newName;
+     }
+ }
+     return array;
+}
+
+
