@@ -1,0 +1,8 @@
+function exp(num1, num2) {
+  for(var i = 1; i < num2; i++) {
+     num1 *=num1;
+  }
+ return num1; 
+}
+
+exp(3, 2);
