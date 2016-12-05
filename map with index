@@ -1,0 +1,14 @@
+This is another way to find the index of a property in an array of objects. The array parameter is an array of objects. Using the array parameter and the index variable, update the object email address (.email or ["email"]) to be the newEmail parameter.
+
+function changeEmail(array, value, newEmail) {
+    var index = array.map(function(e) {
+        return e.userId;
+    }).indexOf(value);
+  	//that loops through it check the property userId, find the index of the parameter value and set it equal the index variable
+
+    // Code here
+    array[index].email = newEmail;
+    return array;
+
+}
+
