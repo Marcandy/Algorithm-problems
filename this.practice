@@ -1,0 +1,204 @@
+function avg(){
+    return (this.a, this.b, this.c) / 3;
+}
+
+var o = {
+  a: 1,
+  b: 2,
+  c: 3,
+  average: avg
+};
+
+var p = {
+  a: 1,
+  b: 2,
+  c: 3,
+  average: avg
+};
+
+console.log(o.average()); //doesn't work
+console.log(p.average); //doesn't work
+
+//Create a dog object that has hungry, tired, playful
+//Create the methods on that object : play, eat, sleep
+//The play method decreases playful by 30 (Never less than 0), and increases hungry by 20 and tired by 10, 
+//The eat method decreases hungry by 30 (Never less than 0) and increases tired by 20
+//The sleep method decreases tired by 30 (Never less than 0) and increases playful by 20
+//Add a method that logs how hungry, tired, and playful your dog is
+
+var dog = {
+  hungry: 50,
+  tired: 25,
+  playful: 35, 
+  play: function() {
+    this.playful -= 30;
+    this.hungry += 20;
+    this.tired += 10;
+    if(this.playful < 0 ) {
+      this.playful = 0;
+    }
+  },
+  eat: function() {
+    this.hungry -= 30;
+    this. eat += 20;
+  },
+  sleep: function() {
+    this.tired -= 30;
+    this.playful += 20;
+  },
+  log: function() {
+    console.log(this.hungry, this.tired, this.playful)
+  }
+  
+}
+
+dog.play();
+
+dog.log();
+
+
+//Create a dog object that has hungry, tired, playful
+var dog = {
+  hungry: 0,
+  tired: 10,
+  playful: 20,
+//Create the methods on that object : play, eat, sleep
+  play: function(){
+    // this.playful -= this.playful < 30 ? this.playful: 30;
+    this.playful -= 30;
+    this.hungry += 20;
+    this.tired += 10;
+    if(this.playful < 0){
+      this.playful = 0
+    } 
+  },
+  eat: function(){
+     this.hungry -= 30;
+    this.tired += 20;
+    if(this.hungry < 0){
+      this.hungry = 0
+    } 
+  },
+  sleep: function(){
+     this.tired -= 30;
+    this.playful += 20;
+    if(this.tired < 0){
+      this.tired = 0
+    } 
+  },
+  log: function(){
+    console.log(this.hungry, this.tired,this.playful)
+  }
+}
+
+dog.play();
+dog.eat();
+dog.sleep();
+dog.sleep();
+dog.sleep();
+dog.sleep();
+dog.play();
+dog.log();
+
+
+function Animal(type, legs, sound){
+	//Store the variables
+	this.type = type;
+	this.legs = legs;
+	this.noise = sound;
+	
+	this.sound = function() {
+	  console.log("The " + this.type + this.noise);
+	}
+	this.run = function() {
+	  console.log("The " + this.type + " run" + this.legs)
+	}
+	//Make a sound method
+	//Make a run method
+}
+
+var lion = new Animal("Lion", 4, "Rooooar");
+
+lion.sound(); 
+
+
+//Build a bank constructor Function
+//It needs an account number, and owner name, and a balance.
+//Give it methods to add and withdraw from the balance
+//Give it a method to log the remaining balance for the owner name
+//Make 2 accounts and manipulate their balances.
+
+function Bank(account, owner, balance) {
+  this.account = account;
+  this.owner = owner;
+  this.balance = balance;
+  this.add = function(parm) {
+    this.balance += parm;
+  }
+  this.remove = function(parm) {
+    this.balance -= parm;
+  }
+  this.log = function() {
+    console.log( this.owner + ":" + this.balance);
+  }
+}
+
+var a = new Bank(222, 'Marc', 50);
+
+a.add(14);
+a.log()
+
+
+//Build a bank constructor Function
+function Bank(accountNum, owner, startingBalance){
+  this.accountNumber = accountNum;
+  this.ownerName = owner;
+  this.balance = startingBalance;
+//Give it methods to add and withdraw from the balance
+  this.add = function(amount){
+    this.balance += amount;
+  }
+  this.withdraw = function(amount){
+    this.balance -= amount;
+  }
+  this.printStatement = function(){
+    console.log("Good day " + this.ownerName + " you have " + this.balance + " in your account")
+  }
+}
+//Make 2 accounts and manipulate their balances.
+var steve = new Bank(3, "Steve", 100);
+steve.add(2500);
+steve.withdraw(3000);
+steve.printStatement();
+
+var nick = new Bank(4, "Nick", 400);
+var addToNick = nick.add; // because we did not invoke is we are reassign it to a new variable
+addToNick.call(nick, 50000)// parameter is the context which is Nick
+addToNick.call(steve, 500)
+steve.printStatement();
+// nick.add(1500);
+nick.withdraw(200);
+nick.printStatement();
+
+// <button id="btn" type="button">Get the car's brand</button>
+
+var car = {
+  brand: "Nissan",
+  getBrand: function(){
+    console.log(this.brand);
+  }
+};
+
+var el = document.getElementById("btn");
+el.addEventListener("click", car.getBrand.bind(car));
+
+
+
+
+
+
+
+
+
+
+
