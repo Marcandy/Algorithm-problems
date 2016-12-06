@@ -1,0 +1,33 @@
+// Given an array of one's and zero's convert the equivalent binary value to an integer.
+
+// Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1
+
+function convert(arr) {
+  barr = arr.join('');
+  return parseInt(barr, 2); //binary is base 2
+}
+
+convert([0, 1, 0, 1]);
+
+const binaryArrayToNumber = arr => {
+  var num = 0;
+  for (var i = 0, exponent = 3; i < arr.length; i++) {
+    if (arr[i]) {
+      num += Math.pow(2, exponent);
+    }
+    exponent--;
+  }
+  return num;
+};
+
+const binaryArrayToNumber = arr => {
+  var number = 0;
+
+  for (var i = 0, j = arr.length - 1; i < arr.length; i++, j--) {
+    if (arr[j]) {
+      number += Math.pow(2, i);
+    }
+  }
+  
+  return number;
+};
