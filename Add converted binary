@@ -1,0 +1,12 @@
+function add(bin) {
+  var bNum = parseInt(bin.join(''), 2);
+  
+  var num = bNum.toString().split('').reduce(function(p, c){// convert bNum back to a string so you can split
+    return Number(p) + Number(c) //convert the current p and current to numver  so you can add them
+  })
+  
+  return num //need to save the output of reduce to a new number
+
+}
+
+add([1, 1, 1, 1]);
