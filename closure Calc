@@ -1,0 +1,34 @@
+function calc(startingNumber) {
+  var total =startingNumber;
+  
+  return {
+    add: function(num) {
+      total += num;
+    },
+    
+    sub: function(num) {
+       total -= num;
+    },
+    
+    mul: function(num) {
+      total *= num;
+  },
+  
+  div: function(num) {
+    total /= num
+  },
+  
+  log: function() {
+    console.log(total);
+  }
+  
+}
+}
+
+var myCal = calc(5);
+myCal.add(6);
+myCal.log()
+myCal.sub(1);
+myCal.mul(10);
+myCal.div(2);
+myCal.log()
