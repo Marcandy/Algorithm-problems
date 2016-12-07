@@ -1,0 +1,20 @@
+String.prototype.title = function() {
+  var str = this.toLowerCase()
+  var title = str.split(' ').map(function(val) {
+    return val[0].toUpperCase() + val.slice(1)
+  })
+  return title.join('')
+}
+
+
+// prototype first and last
+Array.prototype.lf = function(arr) {
+  // var Narr = [];
+  // Narr.push(this[0], this[this.length - 1]);
+  // return Narr;
+  // it could be also
+  return [this[0], this[this.length - 1]]
+}
+
+var boom = [2, 3, 4, 6];
+boom.lf()
