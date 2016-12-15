@@ -1,0 +1,24 @@
+Description:
+
+Replace all vowel to exclamation mark in the sentence. aeiouAEIOU is vowel.
+Examples
+
+replace("Hi!") === "H!!"
+replace("!Hi! Hi!") === "!H!! H!!"
+replace("aeiou") === "!!!!!"
+replace("ABCDE") === "!BCD!"
+
+function replace(b){
+  //coding and coding...
+  s = b.split('')
+  for(var i = 0; i < s.length; i++) {
+    if(s[i].toLowerCase() === 'a' || s[i].toLowerCase() === 'u' || s[i].toLowerCase() === 'e' || s[i].toLowerCase() === 'i' || s[i].toLowerCase() === 'o' ) {
+      console.log('b')
+      s[i] = '!';
+    }
+  }
+  return s.join('');
+}
+
+
+replace('Hi!')
