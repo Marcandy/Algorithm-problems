@@ -22,3 +22,7 @@ function replace(b){
 
 
 replace('Hi!')
+
+function replace(s){
+  return s.replace(/[aeoiu]/ig, '!')  
+}
