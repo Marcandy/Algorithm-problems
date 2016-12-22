@@ -26,3 +26,14 @@ const message2 = (...args) => {
 message2('hi','there')
 createMessage('Hi', 'there')('dsd')('hefdsfs')();
 // createMessage();
+
+//---------------------------
+
+function createMessage(s1) {
+  return function(s2) {// returning a function for closure
+    if (!s2) {//chkecing if additional parameter are passed
+      return s1; // return immediately
+    }
+    return createMessage(s1 + ' ' + s2); // concat it but also call the function on itself
+  }
+}
