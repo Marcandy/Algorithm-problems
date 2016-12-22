@@ -43,3 +43,33 @@ const compose = (...args) => (...args2) => {
   })
 }
 const compose = (...fns) => arg => fns.reduceRight((res, fn) => fn(res), arg);
+
+//---------------------------------------------------------------------
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var test = function test() {
+  for (var _len = arguments.length, args2 = Array(_len), _key = 0; _key < _len; _key++) {
+    args2[_key] = arguments[_key];
+  }
+
+  var props = [].concat(_toConsumableArray(args));
+  var props2 = [].concat(args2);
+  console.log(undefined);
+  if (props.length === 0) {
+    return function (x) {
+      return x;
+    }.apply(undefined, props2);
+  }
+
+  props.push(props2);
+  props.reverse();
+
+  return props.reduce(function (a, b) {
+    return typeof a !== 'number' ? b.apply(undefined, a) : b(a);
+  });
+};
+
+var compose = function compose() {
+  return test;
+};
