@@ -46,7 +46,3 @@ function zipWith(fn,a0,a1) {
 
   return arr;
 }
-
-
-
-zipWith( Math.max, [1,4,7,1,4,7], [4,7,1,4,7,1] ) 
