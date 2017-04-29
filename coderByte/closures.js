@@ -63,3 +63,4 @@ c.add(9);
 
 // now we can access the private variable in the following way
 c.retrieve(); // => The counter is currently at: 14
+
