@@ -1,0 +1,17 @@
+function whatIsInAName(collection, source) {
+  // What's in a name?
+  
+  // Only change code below this line
+   var arr = collection.filter((elm) => {
+     for(let key in source) {
+       if (elm[key] !== source[key]) {
+         return false
+       }
+     }
+     return true
+   })
+  // Only change code above this line
+  return arr;
+}
+
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
