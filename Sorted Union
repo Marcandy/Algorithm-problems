@@ -1,0 +1,21 @@
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
+
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+function uniteUnique(arr) {
+  // first push the first array
+  let fArr = [];
+  for(let i = 0; i < arguments.length; i++) {
+      let currentArr = arguments[i];
+    
+    for(let j = 0; j < currentArr.length; j++) {
+      if(fArr.indexOf(currentArr[j]) < 0) {
+        fArr.push(currentArr[j]);
+      }
+    }
+  }
+  
+  return fArr;
+}
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
