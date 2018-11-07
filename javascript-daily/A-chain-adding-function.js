@@ -12,8 +12,8 @@ function add(num1) {
 			} else {
 				return helper(num1 + num2)
 			}
-			return num1+ num2			
-		}		
+			return num1+ num2
+		}
 	}
 	return helper(num1);
 }
