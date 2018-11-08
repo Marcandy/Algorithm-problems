@@ -12,5 +12,5 @@ function mainMinimum() {
     console.log(min_val);
 }
 
-// make use of build in method like 
+// make use of build in method like
 // Math.abs and Math.min - as well sort
