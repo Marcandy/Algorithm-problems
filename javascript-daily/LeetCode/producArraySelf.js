@@ -27,7 +27,7 @@ for (let i = 0; i < nums.length; i++) {
         if (j === i) {// and multiply each index
             continue;
         } else {
-            product *= nums[j];                
+            product *= nums[j];
         }
     }
     output.push(product);
