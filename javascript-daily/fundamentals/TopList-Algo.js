@@ -704,3 +704,194 @@ Bubble sort is stable ---- it leaves equal value in original order
 
 Insertion Sort ---===== 
 	• https://dev.to/ryan_dunton/insertion-sorting-for-beginners-in-js------fkg
+
+
+
+// Seperate Numbers: https://medium.com/codebrace/separate-the-numbers-aa5e58a8bf34
+/*
+My approach here is Brute Force, simply check for the number for the different number of digits sequence starting
+from 1 to half of length of the string. If at any point the condition failed which is that next number must
+be consecutive we will break the loop and check for the next digits value.
+*/
+//A FUNCTION TO CHECK LEADING ZERO
+// LOGIC IS SIMPLE NUMBER OF DIGIT IN THE NUMBER FORMED MUST BE EQUAL TO THE NUMBER OF THE DIGIT WE ARE RUNNING LOOP FOR
+/*
+not leading zero -
+cannot reorder the string
+
+split the string into caracter --
+  -- loop to compare index following
+    -- how do i know if it a two digit number or more
+    
+    -- trying to avoid multiple loop for performance
+    
+    have multiple loop where we check index
+      soon if fails of beeing not than the previous index
+      we increment our character count
+*/
+function queries(str) {
+	let splitStr = str.split('');
+	let i = 0;
+	let doubleSpace = '';
+	while ( i <= splitStr.length && doubleSpace.length < splitStr.length ) { // put or condition if we need to increment chara
+	  // we could splice the number to be added instead of checking by index
+	  if((Number(splitStr[i]) + 1)  === Number(splitStr[i+1])) {
+		i++
+	  } else if(!splitStr[i +1]) {
+		doubleSpace += '';
+		splitStr = str.split(doubleSpace);
+		i=0;
+	  }
+	  console.log(doubleSpace);
+	}
+	if (!splitStr[i + 1]) {
+	   return 'YES' + splitStr[0];
+	  } else {
+		return 'No';
+	}
+  }
+  
+  
+  queries('1234');
+
+bool checkLeadingZero(ll next_num,ll temp_dig)
+{
+ ll count=0;
+ while(next_num) {
+ count++;
+ next_num/=10;
+ }
+ return count==temp_dig;
+}
+int main()
+{
+ ll q; cin>>q;
+ while(q--)
+ {
+ string s; cin>>s;
+ ll len = s.length();
+ bool flag = false;
+ ll firstNum=0;
+ for(ll dig=1;dig<=len/2;dig++) // loop for each length
+ {
+ ll max =0; //setting max for each digit number
+ for(ll i=1;i<=dig;i++) // CALCULATING MAX
+ max = max*10+9;
+ ll temp_dig = dig; //setting temp digit as we have to increase the digit if we found that number reaches to max
+firstNum = 0;
+ for(ll i=0;i<dig;i++)
+ firstNum = firstNum*10 + (s[i]-'0'); // forming the number as input is the string
+if(checkLeadingZero(firstNum,dig)==false)
+ {
+ flag=false;
+ break;
+ }
+ ll j=dig;
+ ll currentNum = firstNum; //setting current
+while(1)
+ {
+ if(j == len){
+ flag = true;
+ break;
+ }
+ if(currentNum == max) temp_dig++;
+ ll next_num =0;
+ if(j+temp_dig > len)
+ break;
+ for(int i=j;i<j+temp_dig;i++) // forming next number 
+ next_num = next_num*10 + (s[i]-'0');
+if(next_num - currentNum!=1)
+ break;
+ else
+ {
+ currentNum=next_num;
+ j = j+temp_dig;
+ }
+ }
+ if(flag==true) break;
+ }
+ if(flag==true) cout<<"YES "<<firstNum<<endl;
+ else cout<<"NO"<<endl;
+ }
+}
+
+// javascript --- seperate Numbers
+const isContinous = (rest, next) => {
+    let nextS = next.toString();
+    let i = nextS.length;
+    while(i <= rest.length) {
+        if(!rest.startsWith(nextS)) {
+            return false;
+        } else {
+            next = next + 1;
+            rest = rest.substring(i);
+            nextS = next.toString();
+            i = nextS.length;
+        }
+    }
+    if(rest.length !== 0) {
+        return false;
+    }
+    return true;
+}
+
+const processData = input => {
+    const lines = input.split('\n');
+
+    t: for(let i = 1; i < lines.length; i++) {
+        const s = lines[i];
+        for(let j = 1; j <= parseInt(s.length / 2); j++) {
+            const head = s.substring(0, j);
+            const headVal = parseInt(head);
+            const next = headVal + 1;
+            const rest = s.substring(j);
+            if(isContinous(rest, next)) {
+                console.log("YES " + head);
+                continue t;
+            }
+        }
+        console.log("NO");
+    }
+
+};
+
+
+// https://julienrenaux.fr/2017/02/06/hackerrank-efficient-algorithm-solutions-in-javascript/
+
+public static void main(String[] args) {
+	Scanner sc = new Scanner(System.in);
+
+	int q = sc.nextInt();
+	for (int tc = 0; tc < q; tc++) {
+		String s = sc.next();
+
+		long result = solve(s);
+		System.out.println(result > 0 ? "YES " + result : "NO");
+	}
+
+	sc.close();
+}
+
+static long solve(String s) {
+	if (s.charAt(0) == '0') {
+		return -1;
+	}
+
+	for (int length = 1; length * 2 <= s.length(); length++) {
+		long firstNumber = Long.parseLong(s.substring(0, length));
+
+		StringBuilder sequence = new StringBuilder();
+		long number = firstNumber;
+		while (sequence.length() < s.length()) {
+			sequence.append(number);
+			number++;
+		}
+		if (sequence.toString().equals(s)) {
+			return firstNumber;
+		}
+	}
+	return -1;
+}
+
+
+// https://medium.com/@popflorin1705/javascript-coding-challenge-5-ae54f5fc23d5
