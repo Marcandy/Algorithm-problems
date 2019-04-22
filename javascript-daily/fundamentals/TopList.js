@@ -1,6 +1,6 @@
 function LinkedListNode(value) {
-    this.value = value;
-    this.next = null;
+  this.value = value;
+  this.next = null;
 }
 // creating a LinkedList invole setting up the value and node
 let linkedList = new LinkedListNode(9);
@@ -10,75 +10,75 @@ console.log(linkedList.next);
 
 
 function reverse(head) {
-    let node = head,
-        previous, // previous is empty
-        tmp;
-        https://wsvincent.com/javascript-reverse-linked-list/
-    while (node) {
-        // save next before we overwrite it
+  let node = head,
+    previous, // previous is empty
+    tmp;
+  https://wsvincent.com/javascript-reverse-linked-list/
+  while (node) {
+    // save next before we overwrite it
 
-        tmp = node.next;
+    tmp = node.next;
 
-        // now overwite with previous which has no value
+    // now overwite with previous which has no value
 
-        node.next = previous;
+    node.next = previous;
 
-        // now move forward in the list
+    // now move forward in the list
 
-        previous = node; // basically set previous to be head
-        node = tmp // the temp node.next we previously saved
-    }
+    previous = node; // basically set previous to be head
+    node = tmp // the temp node.next we previously saved
+  }
 }
 
 function reverseList(linkedList) {
-    // first I will save the node in current variable
-    // then I will I will have a previous and a nextVal variable 
-    
-    
-    let node = linkedList.head,
-        previous = null;
-     
-    
-    // we goin to loop over until we come to the very end of the linkedList
-    while(node) {
-      let save = node.next;
-      
-      // not breack it 
-      node.next = previous;// empty
-      
-      previous = node;
-      
-      //increment node to he next node 
-      node = save
-    }
-    
-    linkedList.head = previous;
-    return previous;
-  }
-  
-  var inputList = new LinkedList([1,2,3,4])
-  reverseList(inputList)
-  
-  console.log(inputList);
+  // first I will save the node in current variable
+  // then I will I will have a previous and a nextVal variable 
 
 
-  var reverseLinkedList = function(linkedlist) {
-    var node = linkedlist;
-    var previous = null;
-  
-    while(node) {
-      // save next or you lose it!!!
-      var save = node.next;
-      // reverse pointer
-      node.next = previous;
-      // increment previous to current node
-      previous = node;
-      // increment node to next node or null at end of list
-      node = save;
-    }
-    return previous;   // Change the list head !!!
+  let node = linkedList.head,
+    previous = null;
+
+
+  // we goin to loop over until we come to the very end of the linkedList
+  while (node) {
+    let save = node.next;
+
+    // not breack it 
+    node.next = previous;// empty
+
+    previous = node;
+
+    //increment node to he next node 
+    node = save
   }
-  linkedlist = reverseLinkedList(linkedlist);
+
+  linkedList.head = previous;
+  return previous;
+}
+
+var inputList = new LinkedList([1, 2, 3, 4])
+reverseList(inputList)
+
+console.log(inputList);
+
+
+var reverseLinkedList = function (linkedlist) {
+  var node = linkedlist;
+  var previous = null;
+
+  while (node) {
+    // save next or you lose it!!!
+    var save = node.next;
+    // reverse pointer
+    node.next = previous;
+    // increment previous to current node
+    previous = node;
+    // increment node to next node or null at end of list
+    node = save;
+  }
+  return previous;   // Change the list head !!!
+}
+linkedlist = reverseLinkedList(linkedlist);
 
 //===========================
 // API design gudilnies ---https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9
@@ -93,22 +93,22 @@ If there is any major breaking update, we can name the new set of APIs as v2 or 
 
 // Life CYCLES --- REACT 
 
-	• componentWillMount, ComponentWillReceiveProps and componentWillUpdate will be depracated because of features like async rendering
-	• Though two new lifecycle will be made 
-		○ getDerivedStateFromProps
-		○ getSnapShotBeforeUpdate
+• componentWillMount, ComponentWillReceiveProps and componentWillUpdate will be depracated because of features like async rendering
+• Though two new lifecycle will be made
+○ getDerivedStateFromProps
+○ getSnapShotBeforeUpdate
 
 
--async rendering with componentWillmount will cause multiple rendering of the component tree
-- You can use 'supense' for making api to server side the same way you use to for componentWillMount
+  - async rendering with componentWillmount will cause multiple rendering of the component tree
+    - You can use 'supense' for making api to server side the same way you use to for componentWillMount
 
 getDerivedStateFromProps
-    - This method is going to handle what componentWillRecieveProps was able to do along with componentDidUpdate.
-    It is static. It is called after a component is created and also called when it receives a new prop. This will be the safer alternative to componentWillRecieveProps.
+  - This method is going to handle what componentWillRecieveProps was able to do along with componentDidUpdate.
+    It is static.It is called after a component is created and also called when it receives a new prop.This will be the safer alternative to componentWillRecieveProps.
 
-getSnapshotBeforeUpdate(prevProps, prevState) 
+  getSnapshotBeforeUpdate(prevProps, prevState)
 This is going to handle what componentWillUpdate was able to do along with componentDidUpdate.
-This is called right before the DOM is updated. The value that is returned from getSnapshotBeforeUpdate is passed on to componentDidUpdate.
+This is called right before the DOM is updated.The value that is returned from getSnapshotBeforeUpdate is passed on to componentDidUpdate.
 
 /*
 	• Initial Render 
@@ -191,18 +191,18 @@ const myPromise = new Promise((resolve, reject) => {
   reject('oop sorry'); // reject the promise with error
 });
 
-myPromise.then((x)=>{ // use .then for resolving promises
+myPromise.then((x) => { // use .then for resolving promises
   console.log(x);
 })
 
-myPromise.catch((err)=> {
+myPromise.catch((err) => {
   console.log(err);
 })
 // ====================================
 const sum = (...args) => {
   console.log(args);
   let result = 0;
-  result = args.reduce((a , b) => {
+  result = args.reduce((a, b) => {
     return a + b;
   })
   return result;
@@ -262,19 +262,19 @@ function buildTree(data, isChild = false) {
 
 
 // ================================
-. Tree shaking or dead code elimination means that unused modules will not be included in the bundle during the build process.
+.Tree shaking or dead code elimination means that unused modules will not be included in the bundle during the build process.
 
 // ===============================================================
-1) You'll do better in front-end focused interviews if you're more productive at quickly implementing front-end features. You already know how to do this, but practicing it more will help you get faster and better at it
+1) You'll do better in front-end focused interviews if you're more productive at quickly implementing front - end features.You already know how to do this, but practicing it more will help you get faster and better at it
 
 
 2) Mentorship - One way of improving at this is to ask a more experienced programmer friend to review your code for you and suggest ways you can make it shorter
 
 
-3) You should learn more about how frontend apps connect to the rest of a web stack. 
+3) You should learn more about how frontend apps connect to the rest of a web stack.
 
 
-The Algorithm Design Manual: the third chapter : --https://teachyourselfcs.com/#algorithms.  https://www.interviewcake.com/?utm_source=triplebyte. --- https://www.interviewcake.com/data-structures-and-algorithms-guide?utm_source=triplebyte
+The Algorithm Design Manual: the third chapter: --https://teachyourselfcs.com/#algorithms.  https://www.interviewcake.com/?utm_source=triplebyte. --- https://www.interviewcake.com/data-structures-and-algorithms-guide?utm_source=triplebyte
 
 
 //============================================React
@@ -305,51 +305,51 @@ Active Javacript
 // remvove duplicate in 
 let arr = [3, 2, 1, 4, 6, 5, 7, 5]
 function removeDup(arr) {
-// we will have a unique holder
-// the loop through
-// have a hash table 
-// if if already there then dont put i
-let unique = [];
-let trakObj = {};
-for(let i = 0; i < arr.length; i++) {
-if(!trakObj.hasOnwProperty(arr[i])) {
-unique.push(arr[i]);
-trackObj[arri] = 1
-}
-}
-return unique
+  // we will have a unique holder
+  // the loop through
+  // have a hash table 
+  // if already there then dont put i
+  let unique = [];
+  let trakObj = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (!trakObj.hasOnwProperty(arr[i])) {
+      unique.push(arr[i]);
+      trackObj[arri] = 1
+    }
+  }
+  return unique
 }
 
 // reverse every word in a string
 let = 'fdkalsfj test bam';
 function reverseS(str) {
-// we will have a unique holder
-// the loop through
-// split the string in an array
-// loop backward 
-// add in a new array 
-// then join
-let tempStr = str.split('')
-let newHold = [];
-for(let i = tempStr.length - 1; i >= 0; i--) {
-newHold.push(tempStr[i])
-}
-newHold.join();
-return newHold;
+  // we will have a unique holder
+  // the loop through
+  // split the string in an array
+  // loop backward 
+  // add in a new array 
+  // then join
+  let tempStr = str.split('')
+  let newHold = [];
+  for (let i = tempStr.length - 1; i >= 0; i--) {
+    newHold.push(tempStr[i])
+  }
+  newHold.join();
+  return newHold;
 }
 
 // To enguer and deque means to add to stack
 let inputStack = [];
 let ouputStack = [];
 function enqueue(stackInput, item) {
-return stackInput.push(item)
+  return stackInput.push(item)
 }
 function createBase(baseNumber) {
-return function(N) {
-// we are referencing baseNumber here even though it was declared
-// outside of this function. Closures allow us to do this in JavaScript
-return baseNumber + N;
-}
+  return function (N) {
+    // we are referencing baseNumber here even though it was declared
+    // outside of this function. Closures allow us to do this in JavaScript
+    return baseNumber + N;
+  }
 }
 var addSix = createBase(6);
 
@@ -358,36 +358,37 @@ var upperBound = 9;
 var lowerBound = 1;
 findMissingNumber(arrayOfIntegers, upperBound, lowerBound); // 8
 function findMissingNumber(arrayOfIntegers, upperBound, lowerBound) {
-// Iterate through array to find the sum of the numbers
-var sumOfIntegers = 0;
-for (var i = 0; i < arrayOfIntegers.length; i++) {
-sumOfIntegers += arrayOfIntegers[i];
-}
-// Find theoretical sum of the consecutive numbers using a variation of Gauss Sum.
-// Formula: [(N * (N + 1)) / 2] - [(M * (M - 1)) / 2];
-// N is the upper bound and M is the lower bound
-upperLimitSum = (upperBound * (upperBound + 1)) / 2;
-lowerLimitSum = (lowerBound * (lowerBound - 1)) / 2;
-theoreticalSum = upperLimitSum - lowerLimitSum;
-return theoreticalSum - sumOfIntegers;
+  // Iterate through array to find the sum of the numbers
+  var sumOfIntegers = 0;
+  for (var i = 0; i < arrayOfIntegers.length; i++) {
+    sumOfIntegers += arrayOfIntegers[i];
+  }
+  // Find theoretical sum of the consecutive numbers using a variation of Gauss Sum.
+  // Formula: [(N * (N + 1)) / 2] - [(M * (M - 1)) / 2];
+  // N is the upper bound and M is the lower bound
+  upperLimitSum = (upperBound * (upperBound + 1)) / 2;
+  lowerLimitSum = (lowerBound * (lowerBound - 1)) / 2;
+  theoreticalSum = upperLimitSum - lowerLimitSum;
+  return theoreticalSum - sumOfIntegers;
 }
 
 
 // ==================== Module pattern
 
-• Factory function: -- basically create functions main purpose is to create object
-○ Example 
-  § Function createCircle(param) {
-    Return {  radius,
-      draw() {
-       }
-    };
-  }
+• Factory function: --basically create functions main purpose is to create object
+○ Example
+§ Function createCircle(param) {
+  Return {
+    radius,
+      draw() {
+    }
+  };
+}
 ○ const myCircle = createCircle(1);
 
 • Constructor functions: function Circle(radius) {
   this.radius = radius;
-  this.draw = function() {
+  this.draw = function () {
     console.log('draw');
   }
 }
@@ -397,4 +398,31 @@ const circle = new circle(1);
 // =============== thinking outside the box of React -----
 // Do not be set up on the mindset of React
 // React is a virtual Dom tree which return an object
-  // there might be situation where you have to do stuff outside the react dome tree so you musht think aout the box to do so
+// there might be situation where you have to do stuff outside the react dome tree so you musht think aout the box to do so
+
+
+
+
+// promises with axios
+import axios from 'axios'
+
+let myData = [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }]
+
+async function fetchData(dataSet) {
+  for (entry of dataSet) {
+    const result = await axios.get(`https://ironhack-pokeapi.herokuapp.com/pokemon/${entry.id}`)
+    const newData = result.data
+    updateData(newData)
+
+    console.log(myData)
+  }
+}
+
+function updateData(newData) {
+  myData = myData.map(el => {
+    if (el.id === newData.id) return newData
+    return el
+  })
+}
+
+fetchData(myData);

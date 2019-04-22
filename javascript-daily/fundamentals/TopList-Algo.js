@@ -895,3 +895,123 @@ static long solve(String s) {
 
 
 // https://medium.com/@popflorin1705/javascript-coding-challenge-5-ae54f5fc23d5
+
+
+// =======================================
+
+# Reverse Anti Clockwise Spiral Traversal of a Binary Tree
+# Given a binary tree, the task is to print the nodes of the tree in a reverse anti-clockwise spiral manner.
+
+# Examples:
+
+# Input : 
+#           1
+#          /  \
+#         2    3
+#        / \    \
+#       4   5    6
+#          /    / \
+#         7    8   9
+# Output : 7 8 9 1 4 5 6 3 2
+
+# Input :
+#            20
+#          /   \
+#         8     22
+#       /   \  /   \
+#      5     3 4    25
+#           / \
+#          10  14
+         
+# Output : 10 14 20 5 3 4 25 22 8
+
+
+# Time: O(N)
+
+'''
+
+Approach:
+1. do level order in tree [[1], [2,3], [4,5,6], [7,8,9]]
+2. two pointer start, end, put it to output alternatively
+
+# Input : 
+#           1
+#          /  \
+#         2    3
+#        / \    \
+#       4   5    6
+#          /    / \
+#         7    8   9
+  
+        |
+[[1], [2,3], [4,5,6], [7,8,9]]
+                |
+Output = [7,8,9, 1, 4, 5, 6, 3, 2]
+'''
+
+# Input : 
+#           1
+#          /  \
+#         2    3
+#        / \    \
+#       4   5    6
+#          /    / \
+#         7    8   9
+# Output : 7 8 9 1 4 5 6 3 2
+
+def get_clockwise_order(tree):
+    result = [[tree.data]] # 1
+    queue = [tree]
+    level_node = list()
+    while queue:
+        current_node = queue.pop(0) # root:1 , 2, 3
+        
+        if current_node.left:
+            level_node.append(current_node.left) #2, 4
+        if current_node.right:
+            level_node.append(current_node.right) #3, 5, 6
+        if len(queue) == 0:
+            result.append(level_node.copy()) #[[1], [2,3], [4,5,6], [7,8,9]]
+            queue, level_node = level_node, queue
+    # result = [[1], [2,3], [4,5,6], [7,8,9]]
+    print(result)
+    start = 0
+    end = len(result)-1
+    result_clockwise = list()
+    toggle = True
+    while start < end:
+        if toggle:
+            
+            result_clockwise.append(result[end]) #[7,8,9], [7,8,9,1,4,5,6]
+            end -= 1 #2
+            toggle = not toggle
+        else:
+            result_clockwise.append(result[start].sort(reverse=True)) #[7,8,9,1], [7,8,9,1,4,5,6,3,2]
+            start += 1 #1
+            toggle = not toggle
+    return result_clockwise
+#[7,8,9,1,4,5,6,3,2]
+
+import unittest
+
+class Node:
+    def __init__(self, data=None, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+# Input : 
+#           1
+#          /  \
+#         2    3
+#        / \    \
+#       4   5    6
+#          /    / \
+#         7    8   9        
+class Test(unittest.TestCase):
+    def setUp(self):
+        self.test_tree = Node(1, Node(2, Node(4), Node(5, left=Node(7))), Node(3, right=Node(6, Node(8), Node(9))))
+    def test_case(self):
+        self.assertEqual(get_clockwise_order(self.test_tree), [7,8,9,1,4,5,6,3,2])
+
+if __name__ == '__main__':
+    unittest.main()      
