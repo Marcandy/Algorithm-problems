@@ -320,6 +320,7 @@ function removeDup(arr) {
   return unique
 }
 
+
 // reverse every word in a string
 let = 'fdkalsfj test bam';
 function reverseS(str) {
@@ -395,6 +396,19 @@ function findMissingNumber(arrayOfIntegers, upperBound, lowerBound) {
 const circle = new circle(1);
 
 
+class Rectangle extends Polygon {
+  constructor(height, width) {
+    super(height, width) {
+      this.name = 'Rectangle';
+    }
+  }
+
+  sayName() {
+    ChromeSample.log('sup! My name is ', this.name + '-');
+    super.sayHistory();
+  }
+}
+
 // =============== thinking outside the box of React -----
 // Do not be set up on the mindset of React
 // React is a virtual Dom tree which return an object
@@ -418,6 +432,11 @@ async function fetchData(dataSet) {
   }
 }
 
+sync function fetchData(data) {
+  for (entry of data) {
+    let result = await axios.get('something');
+  }
+}
 function updateData(newData) {
   myData = myData.map(el => {
     if (el.id === newData.id) return newData
