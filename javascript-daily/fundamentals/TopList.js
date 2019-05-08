@@ -415,7 +415,7 @@ class Rectangle extends Polygon {
 // there might be situation where you have to do stuff outside the react dome tree so you musht think aout the box to do so
 
 
-
+// the dom return a tree..
 
 // promises with axios
 import axios from 'axios'
@@ -445,3 +445,248 @@ function updateData(newData) {
 }
 
 fetchData(myData);
+
+
+
+// ============================
+
+function getX(){
+	var x = 10;
+}
+
+
+getX()
+//x = undefined;
+
+var x;
+var myFunc;
+
+/* console.log(y);  //error */
+console.log(x); //undefined
+x = 0;
+console.log(x); 0
+
+getX(); //
+function getX() {
+
+};
+myFunc(); //Error undefined()
+myFunc = function (){
+
+}
+
+// this == window
+
+
+function free(){
+	//this
+}
+
+var x = {
+	y: function(){
+  	//x
+  }
+  z: {
+  	c() {
+    	// this window
+    }.bind(this)
+  }
+}
+
+free(); /// window.free();
+x.y();
+x.z.c()
+
+
+//stateless, component and purecomponent
+
+//stateless, component and purecomponent
+
+// controlled and uncontrolled
+
+// redux immutanility object reference - create a copy of that object
+// input should not modify reducer -
+// a new instance when updating ui
+
+// resolving the then in lifcycle and even in componentDidMoutn- there is a possibility of not having the state anymore when the promise is fininising the 
+// a good use of .then directly the componenet is a search bar where you want to continuatly make search request for each keyword
+
+class Listener {
+	constructor(thread){
+  	this.result = "";
+  }
+  listen(str){
+  	this.result += str;
+  }
+  
+  console(str){
+  	console.log(this.result);
+  }
+  
+}
+
+const obj = new Listener();
+
+obj.listen(cb)//2
+obj.listen('here')//3
+obj.listen('here')//4
+obj.listen('here');//1
+
+obj.console(); //herehereherehere
+
+
+
+// =======================================
+// table in React
+<table id="simple-board">
+        <tbody>
+          <tr id="row0">
+            <td id="cell0-0"></td>
+            <td id="cell0-1"></td>
+            <td id="cell0-2"></td>
+          </tr>
+          <tr id="row1">
+            <td id="cell1-0"></td>
+            <td id="cell1-1"></td>
+            <td id="cell1-2"></td>
+          </tr>
+          <tr id="row2">
+            <td id="cell2-0"></td>
+            <td id="cell2-1"></td>
+            <td id="cell2-2"></td>
+          </tr>
+        </tbody>
+      </table>
+
+constructor(props){
+  super(props);
+  this.state = {size: 3}
+}
+
+export default class Example extends Component {
+  constructor(props){
+    super(props);
+    this.state = {size: 3}
+  }
+  render(){
+    let rows = [];
+    for (var i = 0; i < this.state.size; i++){
+      let rowID = `row${i}`
+      let cell = []
+      for (var idx = 0; idx < this.state.size; idx++){
+        let cellID = `cell${i}-${idx}`
+        cell.push(<td key={cellID} id={cellID}></td>)
+      }
+      rows.push(<tr key={i} id={rowID}>{cell}</tr>)
+    }
+    return(
+      <div className="container">
+        <div className="row">
+          <div className="col s12 board">
+            <table id="simple-board">
+               <tbody>
+                 {rows}
+               </tbody>
+             </table>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+export default class MyTable extends React.Component {
+
+  createTable = () => {
+
+    let table = []
+    for (let i = 0; i < rows.length; i++) {
+      let children = []
+      children.push(<td>{rows[i]}</td>, <td>{<SimpleListMenu />}</td>)
+      table.push(<tr>{children}</tr>)
+    }
+    return table
+
+  }
+
+  render() {
+    return(
+      <table>
+        {this.createTable()}
+      </table>
+    )
+  }
+
+}
+
+//============
+
+0
+▼
+I created a node class and stored the head node as a member variable in my linked list class.
+
+maxVal = arr[1]
+for(let j = 0; j < arr.length; j++){
+currenVal = arr[j];
+
+
+ for(let i = j; i < arr.length; i++) {
+	currentVal += arr[i]
+	if(currentVal > maxVal) {
+		maxVal = currentVal
+	}
+}
+
+hashMap = object-
+
+For me check all possible i need loop increasing my increasing
+
+
+2.  3 + 2 + “7” → “57”
+
+3. “==” and “ =”
+
+4. “unshift”
+[“John”]
+
+5. JSX
+
+6. Default State → Action1 → Action2
+
+// ========================================================
+
+function removeDuplicates(arr) {
+	var res = [];
+  //...
+	// loop through array to compare values
+  // check the next index - or add it to an object with bool key
+  let seen = {};
+  for(let i = 0; i < arr.length; i++) {
+  	if(!seen[arr[i]]) {
+    	console.log('here');
+    	res.push(arr[i]);
+      seen[arr[i]] = true;
+    }
+  }
+  return res;
+}
+
+function runTestCase(arr, id) {
+	var answer = removeDuplicates(arr)
+  document.getElementById(id).innerHTML = JSON.stringify(arr) + " => " + JSON.stringify(answer);
+  
+  if(id == 'answer2') {
+  	const passingArr = Array.isArray(answer)
+  	document.document.getElementById(id).innerHTML = "is output an array?" + 	passingArr;
+  }
+}
+
+// edge case of an array output
+/* function testCasesConstraint() {
+  let answer = 
+}
+ */
+
+
+runTestCase([0,0,1,1,2,2,3,3], "answer1");
+runTestCase([0,0,1,1,2,2,3,3], "answer2");
