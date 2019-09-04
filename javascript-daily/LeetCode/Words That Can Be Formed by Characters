@@ -1,0 +1,54 @@
+let countCharacters = function(words, chars) {
+  let count = 0;
+  for(let word of words) {
+    count += isValid(word, chars) ? word.length : 0;
+    }
+    
+    return count;
+};
+
+
+let isValid = function( word, chars, i = 0) {
+  if( i === word.length) {
+    return true;
+   }
+   
+   let index = chars.indexOf(word[i]);
+   
+   if (index !== -1) {
+     retun isValid(word, chars.slice(0, index) + chars.clice(index+1), i+1);
+    }
+    return false;
+ }
+ 
+ 
+ 
+ let countCharacters = funcion(words, chars) {
+ 
+    let count = 0;
+    
+    const makeHash = (word) => {
+      let hash = {}
+      for (let i =0; i < word.length; i++) {
+        hash[word[i]] ? hash[word[i]]++ : hash[word[i]] = 1
+        }
+        return hash
+    }
+    
+    let hash = makeHash(chars)
+    
+    for(let i = 0; i < words.length; i++) {
+      let bool = true
+      let temp = makeHash(words[i])
+      for(et key in temp) {
+        if(!hash[key] || hash[key] < temp[key]) {
+          bool = false
+          }
+        }
+        
+        bool && ( count += words[i].length)
+      }
+      
+      return count
+      
+    };
