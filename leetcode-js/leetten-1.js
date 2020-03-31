@@ -99,3 +99,24 @@ var sortedSquares = function(A) { //two pointer by ceating an empty array
 };
 
 // ================================================================================
+
+
+
+/* 
+EPI 13.6
+
+collection is an array of array
+endpoint is an array of object
+*/
+
+const endpoints = []
+
+function maxCocurrentEvent(listEvent) {
+    let allEndpoint = []
+    for(let i = 0; i < listEvent.length; i++) {
+        for(let j = 0; j < endpoints.length; j++)
+        allEndpoint.push([listEvent[i], endpoints[j]])
+    }
+
+    allEndpoint.sort()
+}
