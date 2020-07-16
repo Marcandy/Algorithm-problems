@@ -107,31 +107,31 @@ const quickSort = (arr, start = 0, end = arr.length - 1) => {
   
 console.log(quickSort([2,7,1]));
 
-// const pivot = (arr, start = 0, end = arr.length + 1) => {
-//     const swap2 = (list, a, b) => [list[a], list[b]] = [list[b], list[a]];
+const pivot = (arr, start = 0, end = arr.length + 1) => {
+    const swap2 = (list, a, b) => [list[a], list[b]] = [list[b], list[a]];
   
-//     let pivot = arr[start],
-//         pointer = start;
+    let pivot = arr[start],
+        pointer = start;
   
-//     for (let i = start; i < arr.length; i++) {
-//       if (arr[i] < pivot  ) {
-//         pointer++;
-//         swap2(arr, pointer, i);
-//       }
-//     };
-//     swap2(arr, start, pointer);
+    for (let i = start; i < arr.length; i++) {
+      if (arr[i] < pivot  ) {
+        pointer++;
+        swap2(arr, pointer, i);
+      }
+    };
+    swap2(arr, start, pointer);
   
-//     return pointer;
-//   }
+    return pointer;
+  }
 
-//   const quickSort2 = (arr, start = 0, end = arr.length) => {
-//     let pivotIndex = pivot(arr, start, end);
+  const quickSort2 = (arr, start = 0, end = arr.length) => {
+    let pivotIndex = pivot(arr, start, end);
   
-//     if (start >= end) return arr;
-//     quickSort(arr, start, pivotIndex);
-//     quickSort(arr, pivotIndex + 1, end);
+    if (start >= end) return arr;
+    quickSort(arr, start, pivotIndex);
+    quickSort(arr, pivotIndex + 1, end);
   
-//     return arr;
-//   };
+    return arr;
+  };
   
-//   console.log(quickSort2([2,3,5,6,7,9,10,4,34,56,1,6]));
+  console.log(quickSort2([2,3,5,6,7,9,10,4,34,56,1,6]));
