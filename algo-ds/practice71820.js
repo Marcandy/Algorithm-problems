@@ -6,6 +6,10 @@ After deleting all nodes with a value in to_delete, we are left with a forest
 Return the roots of the trees in the remaining forest.  You may return the result in any order
 */
 
+//traverse the tree - as we doing that add each node not in i delete
+// mark that node to be deleted bu at the same time
+/// do recursion left and right to its children
+
 
 var delNodes = function(root, to_delete) {
     //  we can return the tree in any order
@@ -13,7 +17,7 @@ var delNodes = function(root, to_delete) {
     
     
     // we need to find each value
-    // delete in order to keeep traversing the rest of the node 
+    // delete in order to keep traversing the rest of the node 
     // the deleted node children if any
     
     // pre-order
@@ -85,7 +89,22 @@ var delNodes = function(root, to_delete) {
 
 
 // ================================================ Pramp Largest Deficit
+/*
+Given an array route of 3D points, implement a function calcDroneMinEnergy 
+that computes and returns the minimal amount of energy the drone would need to complete its route.
+ Assume that the drone starts its flight at the first point in route. 
+That is, no energy was expended to place the drone at the starting point.
 
+route = [ [0,   2, 10],
+                  [3,   5,  0],
+                  [9,  20,  6],
+                  [10, 12, 15],
+                  [10, 10,  8] ]
+
+I would calculate the difference between the diffrence between [i + 1][z] - [i][Z]
+That is the energy expanded for each stage
+while keeping track of a largest deficit - when it was the lowest energy
+*/
 
 function calcDroneMinEnergy(route) {
     // your code goes here
@@ -100,15 +119,18 @@ function calcDroneMinEnergy(route) {
     /*
         byt adding up the numbers we will get like a negative number
     */
-   let largestDeficit = 0, currTotalEnergy = 0;
-   for(let i = 1; i < route.length ; i++) {
-       currTotalEnergy = currTotalEnergy + ( route[i - 1][2]  - route[i][2] )
-     if(currTotalEnergy < largestDeficit) { // meaning it's a negative number
-       largestDeficit = currTotalEnergy
-     }
+    let largestDeficit = 0, currTotalEnergy = 0;
+    for(let i = 1; i < route.length ; i++) {
+        currTotalEnergy = currTotalEnergy + ( route[i - 1][2]  - route[i][2] )
+        console.log(currTotalEnergy)
+      if(currTotalEnergy < largestDeficit) { // saving the largest low number
+        largestDeficit = currTotalEnergy
+      }
+    }
+    return Math.abs(largestDeficit);
    }
    
-   return -1*(largestDeficit)
+   return Math.abs(largestDeficit);
   }
 
   // anothe approach
@@ -194,4 +216,33 @@ function calcDroneMinEnergy(route) {
   }
 
 
-  //==============================================================================
+  //======================================================================================================
+  //                                   -- CRACK 4.11---
+
+  class BinaryTree {
+    constructor(data) {
+      this.root = data
+    }        
+
+
+    getRandomNode() {
+      // traverse the tree populate them in an array like [], imput each node not just the value
+          // could save/cache this as a value on the class
+      // then choose a random number with built in method Math.random()
+      // use the number to return a specific node                                                                                                                      
+      if (root == null) return null;
+
+      const randomNum = Math.random(root.length); // get a random number depending on the lenght of the root
+
+      return this.getIthNode(randomNum)
+
+    }
+  }
+
+
+  //==========================================Review=======================================
+
+  https://www.youtube.com/watch?v=gcULXE7ViZw
+
+
+  https://www.youtube.com/watch?v=86g8jAQug04
