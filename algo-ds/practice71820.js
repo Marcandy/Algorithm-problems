@@ -122,3 +122,76 @@ function calcDroneMinEnergy(route) {
     
     return maxHeight - route[0][2]
   }
+
+
+
+  // ==========================================BBSWE Tree Construction ==================================
+
+  /*
+      Given the preorder and inorder traversals of a tree, construct the binary tree.
+
+    Example 1:
+    Input: 
+    preorder [ ] 
+    inorder  [ ]
+
+    Output: 
+    [ ]
+
+    Explanation:
+    The binary tree is empty. 
+  */
+  
+  let preorderIndex = 0 // we keep this outside as a tracker - (need to refactor in the future)                                                                                                                                  
+  const buildTree = (preorder, inorder) => {
+    // the preorder give us the first root 
+  
+    const inorderNodeToIndex = inorder.reduce((acc, item, index) =>  { // put all in and object 
+                                            // so we can have access to the node and index in constant value
+        acc[item] = index
+        return acc;
+    }, {});
+
+
+    return build(preorder, inorder, 0, inorder.length - 1, inorderNodeToIndex);
+
+  }
+
+  const build = (
+    preorder,
+    inorder,
+    inorderStart,
+    inorderEnd,
+    inorderNodeToIndex
+  ) => {
+    if (inorderStart > inorderEnd) {
+      return null;
+    }
+    
+    const nodeValue = preorder[preorderIndex];
+    const node = new TreeNode(nodeValue);
+    preorderIndex += 1;
+
+    if (inorderStart == inorderEnd) {
+      return node
+    }
+    
+    const inorderIndex =  inorderNodeToIndex[value]
+
+    node.left = build(preorder, inorder, inorderStart, inorderIndex - 1, inorderNodeToIndex);
+    node.right = build(preorder, inorder, inorderIndex + 1, inorderEnd, inorderNodeToIndex); // need to review why inorderEnd after inorderIndex + 1
+
+    return node;
+  }
+  
+
+  class TreeNode {
+    constructor(val) {
+      this.val = val;
+      this.left = null; // Points to another TreeNode object
+      this.right = null; // Points to another TreeNode object
+    }
+  }
+
+
+  //==============================================================================
