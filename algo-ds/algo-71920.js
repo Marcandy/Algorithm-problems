@@ -1,4 +1,6 @@
 /*
+                    =======ITC Messagin APP ===========
+
 Given information about active users on the network, find the shortest route for a message from one user 
 (the sender) to another (the recipient). Return an array of users that make up this route.
 
@@ -141,3 +143,99 @@ function calcEquation(equations, values, queries) {
         pathMap[equations[i][1]].push([equations[i][0], 1 / values[i]]) 
     }
 }
+
+
+
+ //=====================================BBSWE- Paint Matrix================================
+  /*
+  Given a 2-color matrix and a point start, flip all points in the adjacent region of start to the opposite color.
+
+      Example:
+      Input:
+      image = [
+        [0, 0, 1, 0],
+        [0, 0, 1, 0],
+        [0, 0, 1, 0],
+        [0, 0, 1, 0]
+      ]
+      row = 0
+      col = 1
+      newColor = 1
+
+      Output:
+      [
+        [1, 1, 1, 0],
+        [1, 1, 1, 0],
+        [1, 1, 1, 0],
+        [1, 1, 1, 0],
+      ]
+
+Explanation: (0, 1) is color 0, the whole adjacent region was flipped to 1's
+
+*/
+
+   // first i would locate the start
+  // check its left right and top wether they are the specific color
+  // if not change that entire column
+  
+  const paint = (image, row, col, newColor) => {
+  
+  
+    // first i would locate the start
+    // check its left right and top wether they are the specific color
+    // if not change that entire column
+    
+    let correctColor = image[row][col] === newColor ? true : false;
+    
+    let rightColum = image[row][col + 1] === newColor ? true : false;
+    
+    let leftColum = image[row][col + 1] === newColor ? true : false;
+    
+    if( !rightColum) {
+      
+    }
+    
+  }
+
+  https://backtobackswe.com/platform/content/paint-a-matrix/video
+
+
+
+
+  // =================================================Pramp Array of Array Products==============
+
+  /*
+    Given an array of integers arr, you’re asked to calculate for each index i the product of all integers except the integer at that index (i.e. except arr[i]). Implement a function arrayOfArrayProducts that takes an array of integers and returns an array of the products.
+    Solve without using division and analyze your solution’s time and space complexities.
+
+    input:  arr = [2, 7, 3, 4]
+    output: [84, 24, 56, 42] # by calculating: [7*3*4, 2*3*4, 2*7*4, 2*7*3]
+  */
+  function arrayOfArrayProducts(arr) {
+    // for each i
+    // two pointer i, j
+    // save hashtable
+    
+    // output[i] =  P_left(0 ... i-1) * P_right(i+1 ...n )
+    let n = arr.length;
+
+    if( n === 0 || n === 1) {
+      return [];
+    };
+
+    let listTotalVal = [];
+    let leftTotal = 1;
+
+    for(let i = 0; i < n; i++) {
+      listTotalVal[i] = currSum;
+      leftTotal *= arr[i];
+    };
+
+    let rightTotal = 1;
+    for(let j = n - 1; j >= 0; j--) {
+      listTotalVal *= rightTotal;
+      rightTotal *= arr[j];
+    };
+    
+    return listTotalVal;
+  }

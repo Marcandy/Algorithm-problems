@@ -240,9 +240,12 @@ function calcDroneMinEnergy(route) {
   }
 
 
+ 
   //==========================================Review=======================================
 
   https://www.youtube.com/watch?v=gcULXE7ViZw
 
 
   https://www.youtube.com/watch?v=86g8jAQug04
+
+
