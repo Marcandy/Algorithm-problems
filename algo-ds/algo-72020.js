@@ -17,12 +17,10 @@ Explanation: 3 is a peak element and your function should return the index numbe
 */
 
 function findPeekElement() {
-     // even though the array is not sorted 
+     // the array is not sorted though 
     // I still can do a binary search on it 
     // so I can search both left and rihght
-    
-    // or sorting it could help with quicksort
-    // do we have to sort it ?
+
     // can we just traverse both left and right
     let left = 0, right = nums.length - 1;
 
@@ -237,6 +235,11 @@ const search = (matrix, target) => {
     }
 
     let col = matrix[0].length - 1; // we starting at the right most corner
+                                    // where you start searching matter
+                                    // the right corner give you flexibilty
+                                    // to go left backward to decrease value
+                                    // while to go down to increase value
+                                    // thereby reducing our search area
     let row = 0; 
 
     while(col >= 0 && row <= matrix.length - 1) {
@@ -249,11 +252,133 @@ const search = (matrix, target) => {
        if(target == matrix[row][col]) {
            return true;
        } else if ( target < matrix[row][col]) {
-           col--;
+           col--; // we backward left to a different column
        } else if ( target < matrix[row][col]) {
-           row++;
+           row++; // we go downward to a different row
+                    // since the column are in ascending order
+                    // that means we guaranteed to get a higher value
        }
     }
 
     return false;
 }
+
+// ===================================================Pramp - Flatten Dictionary=======================================================
+
+function flattenDictionary(dict) {
+    let flatDictionary = {};
+
+    function flattenHelper(initialKey, dict, flatDictionary) {
+        // recursive
+        // if key is empty it will take prev obj[i - 1]
+        // key2.c.d --> directly key value
+
+        for( key in dict) {
+            if(typeof(dict[key]) === 'string' || 'number') { // check if it is not an object
+                if(initialKey === null || initialKey === "") {
+                    flatDictionary[key] = dict[key];
+                } else {
+                    flatDictionary[initialKey + '.' + key] = dict[key];
+                }
+            } else {
+                if(initialKey === null || initialKey === "") {
+                    flattenHelper(key, dict[key], flatDictionary)
+                } else {
+                    flattenHelper(initialKey + "." + key, dict[key], flatDictionary)
+                }
+            }
+        }
+    }
+  
+    flattenHelper("", dict, flatDictionary)
+    return flatDictionary;
+  }
+
+  // second solution
+
+  function flattenDictionary(dict):
+    flatDictionary = {}
+    flattenDictionaryHelper("", dict, flatDictionary)
+
+    return flatDictionary
+
+
+function flattenDictionaryHelper(initialKey, dict, flatDictionary):
+    for (key : dict.keyset()):
+        value = dict.get(key)
+
+        if (!isDictionary(value)): # the value is of a primitive type
+            if (initialKey == null || initialKey == ""):
+                flatDictionary.put(key, value)
+            else:
+                flatDictionary.put(initialKey + "." + key, value)
+        else:
+            if (initialKey == null || initialKey == "")
+                flattenDictionaryHelper(key, value, flatDictionary)
+            else:
+                flattenDictionaryHelper(initialKey + "." + key, value, flatDictionary)
+
+// =====================================Leet 459 - repeated substring ===========================
+
+/*
+Given a non-empty string check if it can be constructed by taking a substring of it and appending multiple copies of the substring together. You may assume the given string consists of lowercase English letters only and its length will not exceed 10000.
+
+ 
+
+Example 1:
+
+Input: "abab"
+Output: True
+Explanation: It's the substring "ab" twice.
+
+*/
+function repeatedSubPattern(str) {
+    if (str.length === 0 || str.length === 1) return false;
+   
+    let median = Math.floor(str.length / 2);
+    for(let i = 1; i <= median; i++) { // we loop up until the middle
+        let subString = str.slice(0, i);
+        let multiple = Math.floor(str.length / subString.length) // the whole string diviced by sub
+        if(str.length % i === 0 && subString.repeat(multiple) === str ) { // we multiply the sub part to be equal to the whole str
+            return true
+        }
+    }
+    return false
+}
+
+//-- other solution
+
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:        
+        n = len(s)
+        if n < 2:
+            return False
+        if n == 2:
+            return s[0] == s[1]
+            
+        for i in range(int(n**0.5), 0, -1):
+            if n % i == 0:
+                divisors = [i]
+                if i != 1:
+                    divisors.append(n // i)
+                for l in divisors:
+                    first_hash = curr_hash = hash(s[:l])
+                    start = l
+                    while start != n and curr_hash == first_hash:
+                        curr_hash = hash(s[start:start + l])
+                        start += l
+                    if start == n and curr_hash == first_hash:
+                        return True
+                
+        return False
+
+/*
+Complexity Analysis
+
+Time: O(n log(n)) * O(logn)
+Space: O(logn)
+*/
+
+// ====================================== Review ==========================
+
+// Backtracking Sum of Subsets:  https://www.youtube.com/watch?v=kyLxTdsT8ws
