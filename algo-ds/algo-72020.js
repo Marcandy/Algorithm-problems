@@ -130,3 +130,130 @@ function findRotationPoint(words) { // inital approch
 
     return rightIndex;
 }
+
+// ======================================= BBSWE SEARCH 2D MATRIX =================================
+
+/*
+Given a 2D matrix (which is m x n) find the given element with value value. If the matrix contains the value return true, otherwise return false.
+
+Variant 1:
+In this variant, all values in the matrix are increasing in row-major order.
+
+This means that:
+Each row is sorted
+The last element in row i is <= the first element in row i+1
+By virtue of the previous two properties, the columns are sorted
+
+Example:
+Input:
+value = 6
+[
+  [0, 1, 2, 3],
+  [4, 5, 6, 7],
+  [8, 9, 10, 11]
+]
+
+Output: true
+
+
+Variant 2:
+In this variant:
+Each row is sorted
+Each column is sorted
+There is no guarantee that the last element in row i is <= the first element in row i+1
+
+Example:
+Input:
+value = 20
+[
+  [1, 4, 7, 11]
+  [8, 9, 10, 20]
+  [11, 12, 17, 30]
+]
+
+Output: true
+
+*/
+
+
+function search(matrix, target) {
+    if( matrix.length === 0) {
+        return false;
+    }
+
+    let totalRows = matrix.length; // horizontal
+    let totalColums = matrix[0].length; // vertical
+
+     /*
+     * The left and right pointer to our search. We imagine a visualization of a 1D
+     * array and will use our mapping system to convert these indices into concrete
+     * locations in the 2D matrix.
+     * 
+     * The the last position in the matrix if we consider it as array will be rows *
+     * cols - 1 indices.
+     * 
+     * Same as an array...an array's last index is arr.length - 1.
+     */
+
+     let left  = 0;
+     let right = totalRows * totalColums - 1;
+
+     while( left <= right) {
+        let middle = left + (right - left) / 2;
+
+        let middleElementValue = matrix[middle / totalColums][middle % totalColums];
+
+        if (middleElementValue == target) {
+            return true;
+        } else if (middleElementValue < target) {
+            left = middle + 1;
+        } else {
+            right = middle - 1;
+        }
+     }
+     return false;
+} 
+
+/*
+Variant 2:
+In this variant:
+Each row is sorted
+Each column is sorted
+There is no guarantee that the last element in row i is <= the first element in row i+1
+Example:
+Input:
+value = 20
+[
+  [1, 4, 7, 11]
+  [8, 9, 10, 20]
+  [11, 12, 17, 30]
+]
+Output: true
+*/
+
+const search = (matrix, target) => {
+    if (matrix.length == 0) {
+        return false;
+    }
+
+    let col = matrix[0].length - 1; // we starting at the right most corner
+    let row = 0; 
+
+    while(col >= 0 && row <= matrix.length - 1) {
+       /*
+      Cases:
+        target == item : We found the item. Return true.
+        target < item : Target must be to our left...go down in value
+        target > item : Target must be to our below...go up in value
+        */
+       if(target == matrix[row][col]) {
+           return true;
+       } else if ( target < matrix[row][col]) {
+           col--;
+       } else if ( target < matrix[row][col]) {
+           row++;
+       }
+    }
+
+    return false;
+}
