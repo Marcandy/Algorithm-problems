@@ -382,3 +382,172 @@ Space: O(logn)
 // ====================================== Review ==========================
 
 // Backtracking Sum of Subsets:  https://www.youtube.com/watch?v=kyLxTdsT8ws
+
+
+// * how do you start adding those array properties?
+// * how you remove them properly so you only remove the k least
+// will the heep structure be maintained
+
+//=================================================================
+/*
+
+
+
+List of Depths: Given a binary tree, design an algorithm which creates a linked list of all the nodes
+at each depth (e.g., if you have a tree with depth 0, you'll have 0 linked lists).
+
+          2
+         / \
+        1   3
+       / \  /
+      0   4 5
+2 
+1 -> 3
+0 -> 4
+
+levels = [[2]]
+queue = [1,3]
+temp = [2]
+init level to store levels
+init a queue and push root node
+loop while queue length
+    track length of queue
+    init temp array
+    shift off length node
+      push current node value into temp
+      for each node check for left and right nodes
+        if they exist push to queue
+    push temp array into levels
+
+ */
+
+
+
+
+const treeLevelToLinkedList = (root) => {
+    const levels = [];
+    const queue = [root];
+    while (queue.length) {
+      const temp = [];
+      let length = queue.length;
+      for (let i = 0; i < length; i++) {
+        let current = queue.shift();
+        temp.push(current.val);
+        if (current.left) {
+          queue.push(current.left);
+        }
+        if (current.right) {
+          queue.push(current.right);
+        }
+      }
+      levels.push(temp);
+    }
+    console.log(levels)
+  }
+  
+  /*
+  ArrayList<LinkedList<TreeNode» createLevelLinkedList(TreeNode root) {
+  2 ArrayList<LinkedList<TreeNode» result = new ArrayList<LinkedList<TreeNode»();
+  3 1* "Visit" the root *1
+  4 LinkedList<TreeNode> current = new LinkedList<TreeNode>();
+  5 if (root != nUll) {
+  6 current.add(root);
+  7 }
+  CrackingTheCodinglnterview.com 16th Edition 243
+  Solutions to Chapter 4 I Trees and Graphs
+  8
+  9 while (current.size() > e) {
+     result.add(current)j II Add previous level
+  11 LinkedList<TreeNode> parents = currentj II Go to next level
+    current = new LinkedList<TreeNode>()j
+   for (TreeNode parent : parents) {
+    1* Visit the children *1
+  15 if (parent. left != nUll) {
+      current.add(parent.left)j
+  17 }
+  18 if (parent. right != nUll) {
+      current.add(parent.right)j
+  2e }
+  21 }
+  22 }
+  23 return resultj
+  24 }
+  
+  */
+  
+  function TreeNode(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+  
+  
+  const root = new TreeNode(2);
+  const left = new TreeNode(1);
+
+  const right = new TreeNode(3);
+  root.left = left;
+  root.right = right;
+  left.left = new TreeNode(0);
+  left.right = new TreeNode(4);
+  right.left = new TreeNode(5)
+  treeLevelToLinkedList(root)
+  
+  //=====================================================LeetCode 199 ==================================
+  /*
+Given a binary tree, imagine yourself standing on the right side of it, 
+return the values of the nodes you can see ordered from top to bottom.
+
+Example:
+
+Input: [1,2,3,null,5,null,4]
+Output: [1, 3, 4]
+Explanation:
+
+   1  0          <---
+ /   \
+2     3     1    <---
+ \     \
+  5     4   2    <---
+ /
+6
+
+as looping both children
+right.righ ==> 1
+right.lft ==> 2
+left.right == 3
+left.left == 4
+
+*/
+
+function rightSideView() {
+    let result = [];
+    
+    function dfs(root, level) {
+        if(!root) return;
+        if(!result[level]) result.push(root.val); // because of this condition we need to 
+                                                  // recurse right first
+
+        dfs(root.right, level + 1); // increase level in each recurser
+        dfs(root.left, level + 1);
+    }
+    dfs(root, 0);
+    return result;
+}
+
+// other way with left side first 
+
+var rightSideView = function(root) { // make sure to review DFS to understand why the node.left is first here
+                                    // recurse order matter here
+    if (!root) return [];
+    let res = [];
+    pre(root, 0);
+    return res;
+    
+    function pre(node, h) {
+        if (!node) return;
+        res[h] = node.val;
+        pre(node.left, h+1);
+        pre(node.right, h+1);
+    }
+};
